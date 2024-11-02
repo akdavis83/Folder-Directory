@@ -15,7 +15,7 @@
         function addHashToURL() {
             if (!window.location.hash) {
                 const hash = generateHash();
-                window.location.href = `${window.location.origin}/#${hash}.html`;
+                window.location.href = `${window.location.origin}/${hash}.html`;
             }
         }
 
