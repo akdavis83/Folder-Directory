@@ -3,28 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Folder Directory</title>
+    <title>Document</title>
     <script>
-        // Function to generate a random hash
-        function generateHash() {
-            return Math.random().toString(36).substring(2, 15) + 
-                   Math.random().toString(36).substring(2, 15);
-        }
+        // Function to dynamically load content based on hash
+        function loadContentBasedOnHash() {
+            const hash = window.location.hash.substring(1); // Get hash without the '#' symbol
 
-        // Check if URL already has a hash, if not, add one
-        function addHashToURL() {
-            if (!window.location.hash) {
-                const hash = generateHash();
-                window.location.href = `${window.location.origin}/index.html/${hash}`;
+            if (hash) {
+                document.body.innerHTML = `<h1>Welcome to page: ${hash}</h1>`;
+                // You could load additional content based on the hash here
+            } else {
+                document.body.innerHTML = `<h1>Welcome to the default page!</h1>`;
             }
         }
 
-        // Run function on page load
-        window.onload = addHashToURL;
+        // Run function on page load and hash change
+        window.onload = loadContentBasedOnHash;
+        window.onhashchange = loadContentBasedOnHash;
     </script>
 </head>
 <body>
-    <h1>Welcome!</h1>
-    <p>Each visit will generate a unique URL with a hash.</p>
+    <p>Loading content...</p>
 </body>
 </html>
