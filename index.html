@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Folder Directory</title>
+    <script>
+        // Function to generate a random hash
+        function generateHash() {
+            return Math.random().toString(36).substring(2, 15) + 
+                   Math.random().toString(36).substring(2, 15);
+        }
+
+        // Check if URL already has a hash, if not, add one
+        function addHashToURL() {
+            if (!window.location.hash) {
+                const hash = generateHash();
+                window.location.href = `${window.location.origin}/#${hash}.html`;
+            }
+        }
+
+        // Run function on page load
+        window.onload = addHashToURL;
+    </script>
+</head>
+<body>
+    <h1>Welcome!</h1>
+    <p>Each visit will generate a unique URL with a hash.</p>
+</body>
+</html>
